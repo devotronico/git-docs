@@ -1,0 +1,70 @@
+# GITHUB
+
+https://github.com/redeluni/json-faker-directory.git
+
+git config --global user.name 'Daniele Manzi' {configuriamo il nome}
+git config --global user.email 'dmanzi83@gmail.com' {configuriamo l'email}
+
+git remote add origin https://github.com/redeluni/blog.git
+git push -u origin master :     { fa il commit a GitHub }
+git pull origin master :        { se non si riesce a fare il push su GitHub, provare a eseguire prima questo comando e poi fare il push }
+git pull --rebase:              { da studiare }
+
+
+   
+
+--Branch--
+    git branch {visualizza tutti i branch creati}
+    git branch <nome del branch> {crea un nuovo branch e gli da il nome}
+    git checkout <nome del branch> {permette di cambiare branch}
+    git checkout -b <nome del branch>  {crea un nuovo branch, gli da il nome, e lo mette come master}
+    git branch -D <nome del branch> {elimina un branch}
+    git push origin --delete <nome del branch> {elimina un branch su GitHub}
+
+
+--Committare sul GITHUB personale--
+    git remote add origin <link progetto GitHub> {crea connessione a GitHub}
+    git remote add <nomeConnessione> <link progetto GitHub> {crea e da un noma alla connessione a GitHub}
+    git remote {restituisce il nome della connessione}
+    git remote rm <nomeConnessione> {cancella una connessione remota}
+    git push -u origin master {fa il commit a GitHub}
+    git push -u <nomeConnessione> master {fa il commit a GitHub}
+    git push {Invia gli aggiornamenti del proprio progetto a GitHub}
+    git push origin HEAD:<branch remoto> { fa un push da Head a un qualsiasi branch remoto e se non esiste lo crea }
+
+--Committare su GITHUB di altri--
+    git clone <link> {copia sul proprio pc il progetto di altri}
+    git pull {Invia gli aggiornamenti del progetto di altri a GitHub}
+
+-- altri comandi GITHUB --
+    git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY  { copia il proprio repositary in locale }
+    git branch 
+    git branch -r               { [github] }
+    git fetch                   { [github] }
+    git checkout master         { passa al branch master. Se siamo già su master restituisce: Already on 'master' }
+    git checkout origin/master  { [github] }
+    git merge origin/master
+    git pull origin master :    { se non si riesce a fare il push su GitHub, provare a eseguire prima questo comando e poi fare il push }
+
+
+
+
+
+
+Rimuovere un file da tutti i commit fatti su GitHub / Eliminare un file da tutta la cronologia
+https://help.github.com/articles/removing-sensitive-data-from-a-repository/
+
+Se il file da eliminare è: config/database.php
+
+clonare il progetto in una cartella qualsiasi
+$ git clone https://github.com/redeluni/blog.git 
+
+entrare nel progetto da noi clonato 
+$ cd blog                                     
+
+il file da eliminare si trova in 'blog/config/database.php' 
+ci troviamo già nella cartella 'blog' quindi dobbiamo digitare il resto del percorso che è 'config/database.php' 
+$ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch config/database.php' --prune-empty --tag-name-filter cat -- --all
+
+
+git push origin --force --all

@@ -1,0 +1,104 @@
+TUTORIAL-GIT---------------------------------------------------------------
+    ITA
+        https://www.mrwebmaster.it/programmazione/guide/guida-git/
+        https://www.youtube.com/watch?v=7aDscRb6iUg&list=PLGeQyNDhU6x2gSQpmssTzVSeprMHNbSbX
+    
+    ENG
+
+
+
+WORKING DIRECTORY > STAGING AREA > REPOSITARY
+
+--Per Iniziare---------------------------------------------------------------------------------------------------------------
+1] Lanciare git bash
+2] Digitiamo git --version    { controlliamo se � installato e che versione abbiamo }
+3] Dal terminale andiamo nella cartella di progetto che abbiamo creato {nel mio caso � F:\WEB DEV\GIT}
+4] Digitiamo touch nomefile.estensione {creiamo un file con il comando touch es. index.html e app.js}
+5] Aggiungiamo la cartella del progetto a VS Code
+6] Nel terminale digitiamo git init {verrà creata nella cartella del progetto una cartella di nome .git}
+7] git config --global user.name 'Daniele Manzi' {configuriamo il nome}
+8] git config --global user.email 'dmanzi83@gmail.com' {configuriamo l'email}
+9] Digitare touch .gitignore {creiamo il file .gitignore dove scriviamo il nome dei file che non vogliamo ignorare}
+
+
+--COMANDI-PIU USATI----------------------------------------------------------------------------------------------------------------
+q :                             { quit }
+touch :                         { crea un file }
+mkdir <nome cartella> :         { crea una cartella }
+ls :                            { mostra tutti i file dentro la carterlla }
+rm <file> :                     { cancella un file dalla Working Directory }
+git init :
+git status :
+git add <file> :                { aggiunge un determinato file alla Staging Area }
+git commit -m :                 { manda tutto dal Staging Area al Repositary }
+git log :                       { mostra tutti i commit }
+git log --oneline --decorate :  { mostra tutti i commit su una sola linea }
+
+--COMANDI-TUTTI----------------------------------------------------------------------------------------------------------------
+
+
+--Comandi Generali--
+    git init
+    git status
+    git mv old_filename new_filename {rinomina i file}
+
+--Configurazione di GIT--
+    git config
+    git config --global user.name
+    git config --global user.email
+
+|-Aggiungere file--
+|   git add <file> :            { aggiunge un determinato file alla Staging Area }
+    git add *.html :            { aggiunge tutti i file con la stessa estensione alla Staging Area }
+    git add . :                 { aggiunge tutti i file alla Staging Area }
+    git add --force <file> :    { aggiunge il file alla Staging Area anche se presente in .gitignore }
+
+--Rimuovere file--
+    rm {cancella un file che non è ancora nella Staging Area}
+    git rm <file> {rimuove il file dalla Staging Area e dalla Working Directory}
+    git rm --cached <file> {rimuove il file solo dalla Staging Area}
+    git clean option[-n -f -d] {rimuove tutti i file dalla Working Directory}
+
+--Rinominare file--
+    mv <file> <nuovo_file> {rinomina un file che non è ancora nella Staging Area}
+    git mv <file> <nuovo_file> {rinomina un file che è nella Staging Area}
+
+--Scaricare i file dal Repositary --
+    git checkout -- <file> {copiare il file dal Repositary alla Staging Area e alla Working Directory} 
+    git checkout HEAD <file> {copiare il file dell ultimo commit dal Repositary alla Staging Area e alla Working Directory} 
+    git checkout <code> -- <file> {copiare il file di un specifico commit dal Repositary alla Staging Area e alla Working Directory} 
+    git reset HEAD <file> {sposta il file dal Staging Area al Working Directory}
+
+--Inviare i file al Repositary
+    git commit -m {manda tutto dal Staging Area al Repositary}
+    git commit -am {manda tutto dal Working Directory e dal Staging Area al Repositary}
+    git commit --amend -m 'testo' {sovrascrive l ultimo commit cambiando il messaggio}
+    git commit --amend --no-edit  {sovrascrive l ultimo commit senza cambiare il messaggio}
+
+--Mostrare tutti i commit--
+    git log {mostra tutti i commit}
+    git log -n {mostra un determinato numero di commit}
+    git log --reverse {mostra tutti i commit in ordine inverso}
+    git log --online {mostra tutti ogni commit in una sola riga}
+    git log --oneline --stat {mostra tutti i commit con le info sulle modifiche apportate}
+    git log --patch-with-stat {mostra tutti i commit con più info sulle modifiche apportate}
+    git log --oneline --patch -- <file> {mostra solo un file del ultimo commit con info sulle modifiche apportate}
+
+--Mostrare info sui commit--
+    git blame <file> {mostra i dettaglie relativi ai commit su uno specifico file}
+    git diff <commit code> <commit code> {mostra le differenze tra due commit sullo stesso file}
+    git diff {visualizza le differenze tra i file della Working Directory e del Repositary}
+    git diff --staged {visualizza le differenze tra i file della Working Directory della Staging Area e del Repositary}
+
+--Taggare i commit--
+    git tag {mostra elenco dei tag}
+    git tag <nomeTag> {assegna un tag all' ultimo commit}
+    git cat-file -p <nomeTag> {visualizza uno specifico commit con tramite il suo tag} 
+
+--Branch--
+    git branch {visualizza tutti i branch creati}
+    git branch <nome del branch> {crea un nuovo branch e gli da il nome}
+    git checkout <nome del branch> {permette di cambiare branch}
+    git checkout -b <nome del branch>  {crea un nuovo branch, gli da il nome, e lo mette come master}
+    git branch -D <nome del branch> {elimina un branch}
+   
